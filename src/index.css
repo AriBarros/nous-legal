@@ -3,6 +3,22 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@layer base {
+  html, body, #root {
+    height: 100%;
+  }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    width: 100%;
+    @apply h-full bg-background text-foreground;
+  }
+}
+
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);

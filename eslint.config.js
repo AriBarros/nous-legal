@@ -10,7 +10,8 @@ export default tseslint.config(
     extends: [
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended"
     ],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
@@ -20,9 +21,11 @@ export default tseslint.config(
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+        'prettier': js.prettier,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+        "prettier/prettier": "error",
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },

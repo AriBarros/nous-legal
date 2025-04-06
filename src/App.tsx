@@ -3,6 +3,8 @@ import { Header } from '@/components/Header.tsx';
 import { Banner } from '@/components/Banner.tsx';
 import { AtendimentoJuridico } from '@/components/AtendimentoJuridico.tsx';
 import { PlanosSection } from '@/components/planos/PlanosSection.tsx';
+import { Footer } from '@/components/Footer.tsx';
+import { Comentarios } from '@/components/comentarios/Comentarios.tsx';
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
       <Banner />
       <AtendimentoJuridico />
       <PlanosSection />
+      <Comentarios />
+      <Footer />
     </>
   );
 }

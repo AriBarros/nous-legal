@@ -9,7 +9,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { plans } from './planos-data';
 import { useState } from 'react';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, ArrowRight } from 'lucide-react';
 
 export function PlanosSection() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -86,10 +86,12 @@ export function PlanosSection() {
       <div className="mt-10 text-center">
         <a
           href="#"
-          className="text-sm text-gray-900 font-medium hover:underline"
+          className="text-lg text-gray-900 font-medium inline-flex items-center gap-1 underline"
         >
           Quer um plano personalizado?{' '}
-          <span className="text-blue-600">Clique aqui →</span>
+          <span className="text-blue-600 inline-flex items-center gap-1">
+            Clique aqui <ArrowRight className="w-5 h-5" />
+          </span>
         </a>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from 'src/components/ui/button.tsx';
+import { Button } from '@/components/ui/button.tsx';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 

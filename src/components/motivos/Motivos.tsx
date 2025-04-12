@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import { Input } from 'src/components/ui/input';
-import { Button } from 'src/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import { Send } from 'lucide-react';
-import { cn } from 'src/lib/utils';
+import { cn } from '@/lib/utils';
 import { motivos } from './motivos-data';
 
 export function Motivos() {

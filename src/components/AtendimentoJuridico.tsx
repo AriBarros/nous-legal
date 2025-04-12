@@ -1,5 +1,5 @@
 import { Check } from 'lucide-react';
-import { Button } from 'src/components/ui/button.tsx';
+import { Button } from '@/components/ui/button.tsx';
 
 export function AtendimentoJuridico() {
   return (

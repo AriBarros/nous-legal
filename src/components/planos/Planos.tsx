@@ -5,8 +5,8 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from 'src/components/ui/card';
-import { Button } from 'src/components/ui/button';
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { plans } from './planos-data';
 import { useState } from 'react';
 import { CheckCircle, ArrowRight } from 'lucide-react';

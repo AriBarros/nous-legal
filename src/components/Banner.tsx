@@ -1,5 +1,5 @@
 import { ArrowUpRight } from 'lucide-react';
-import { Button } from '@/components/ui/button.tsx';
+import { Button } from 'src/components/ui/button.tsx';
 
 export function Banner() {
   return (

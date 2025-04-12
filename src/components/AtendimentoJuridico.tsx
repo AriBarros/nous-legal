@@ -3,19 +3,20 @@ import { Button } from '@/components/ui/button.tsx';
 
 export function AtendimentoJuridico() {
   return (
-    <div className="bg-[#F3F5F7] py-16 px-4 md:px-20 flex flex-col md:flex-row items-center justify-between mt-40">
+    <div
+      id="atendimento"
+      className="bg-[#F3F5F7] py-16 px-4 md:px-20 flex flex-col md:flex-row items-center justify-center gap-y-10 md:gap-x-80 mt-40"
+    >
       <div className="relative max-w-md w-full">
-        {/* TODO adicionar imagem do WhatsApp */}
-        <div className="w-full h-96 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="w-full h-96 shadow-lg rounded-lg overflow-hidden">
           <img
-            src="https://via.placeholder.com/400x600"
+            src="src/assets/images/whatsapp-chat.svg"
             alt="Simulação do WhatsApp"
             className="w-full h-full object-cover"
           />
         </div>
       </div>
 
-      {/* Texto e chamada para ação */}
       <div className="max-w-xl text-center md:text-left">
         <p className="text-lg text-gray-500 mb-1">Integração completa</p>
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">

@@ -4,11 +4,15 @@ import { MdEmail, MdPhone } from 'react-icons/md';
 export function Footer() {
   return (
     <footer className="bg-white border-t border-gray-200 text-gray-900 px-6 md:px-24 py-16">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-start gap-y-12 gap-x-20">
+      <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-y-12 gap-x-20 text-center md:text-left">
         <div className="max-w-sm">
-          <div className="mb-5">
-            <div className="w-14 h-14 bg-gray-300 rounded-full flex items-center justify-center text-base font-bold">
-              LOGO
+          <div className="mb-5 flex items-center justify-center md:items-start md:justify-start">
+            <div className="w-15 h-15 rounded-full flex items-center justify-center text-base font-bold">
+              <img
+                src="src/assets/logo/nous-legal.svg"
+                alt="Nous Legal Logo"
+                className="w-full h-full object-contain rounded-full"
+              />
             </div>
           </div>
           <h3 className="text-xl font-semibold mb-3">Nous Legal</h3>
@@ -49,17 +53,17 @@ export function Footer() {
           <p className="text-base leading-relaxed mb-3">
             Rua Hugo Correa Paes, 660 – Ato. 1203, Gruta de Lourdes - Maceió
           </p>
-          <div className="flex items-center gap-2 text-base mb-2">
+          <div className="flex items-center justify-center md:justify-start gap-2 text-base mb-2">
             <MdEmail className="w-5 h-5" />
             <span>Hello@gmail.com</span>
           </div>
-          <div className="flex items-center gap-2 text-base">
+          <div className="flex items-center justify-center md:justify-start gap-2 text-base">
             <MdPhone className="w-5 h-5" />
             <span>+ (55) 82 99999–9999</span>
           </div>
         </div>
 
-        <div className="min-w-[160px] md:text-left text-center w-full md:w-auto">
+        <div className="min-w-[160px] w-full md:w-auto">
           <h4 className="text-xl font-semibold mb-5">Siga-nos</h4>
           <div className="flex justify-center md:justify-start gap-4 mb-4">
             <a

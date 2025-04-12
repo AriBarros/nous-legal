@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "@fontsource/poppins";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -13,8 +14,13 @@
   }
 
   body {
+    font-family: 'Poppins', sans-serif;
     width: 100%;
     @apply h-full bg-background text-foreground;
+  }
+
+  a {
+    cursor: pointer;
   }
 }
 

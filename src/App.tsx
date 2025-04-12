@@ -2,9 +2,10 @@ import './index.css';
 import { Header } from '@/components/Header.tsx';
 import { Banner } from '@/components/Banner.tsx';
 import { AtendimentoJuridico } from '@/components/AtendimentoJuridico.tsx';
-import { PlanosSection } from '@/components/planos/PlanosSection.tsx';
+import { Planos } from '@/components/planos/Planos.tsx';
 import { Footer } from '@/components/Footer.tsx';
 import { Comentarios } from '@/components/comentarios/Comentarios.tsx';
+import { Motivos } from '@/components/motivos/Motivos.tsx';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <Header />
       <Banner />
       <AtendimentoJuridico />
-      <PlanosSection />
+      <Motivos />
+      <Planos />
       <Comentarios />
       <Footer />
     </>

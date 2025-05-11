@@ -6,6 +6,7 @@ import { Planos } from '@/components/planos/Planos.tsx';
 import { Footer } from '@/components/Footer.tsx';
 import { Comentarios } from '@/components/comentarios/Comentarios.tsx';
 import { Motivos } from '@/components/motivos/Motivos.tsx';
+import Produtos from '@/components/produtos/Produtos.tsx';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Header />
       <Banner />
       <AtendimentoJuridico />
+      <Produtos />
       <Motivos />
       <Planos />
       <Comentarios />

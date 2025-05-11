@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { produtos } from '@/components/produtos/produtos-data.ts';
 
-export default function Produtos() {
+export function Produtos() {
   return (
     <section className="px-4 py-16 max-w-7xl mx-auto">
       <h2 className="text-3xl font-bold text-[#0d3041] mb-12 text-center">

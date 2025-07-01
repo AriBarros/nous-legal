@@ -1,6 +1,8 @@
 import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button.tsx';
 
+import chatImage from '@/assets/images/whatsapp-chat.svg';
+
 export function AtendimentoJuridico() {
   return (
     <div
@@ -10,7 +12,7 @@ export function AtendimentoJuridico() {
       <div className="relative max-w-md w-full">
         <div className="w-full h-96 shadow-lg rounded-lg overflow-hidden">
           <img
-            src="src/assets/images/whatsapp-chat.svg"
+            src={chatImage}
             alt="Simulação do WhatsApp"
             className="w-full h-full object-cover"
           />

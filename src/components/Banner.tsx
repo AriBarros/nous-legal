@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button.tsx';
+import helpImage from '@/assets/images/help.png';
 
 export function Banner() {
   return (
@@ -22,7 +23,7 @@ export function Banner() {
       <div className="mt-16 sm:mt-32 text-left max-w-4xl mx-auto px-4 sm:px-0">
         <div className="w-full flex justify-center mb-6">
           <img
-            src="src/assets/images/help.png"
+            src={helpImage}
             alt="Ajuda"
             className="w-full sm:w-3/4 object-contain"
           />

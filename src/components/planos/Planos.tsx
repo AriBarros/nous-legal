@@ -69,7 +69,7 @@ export function Planos() {
 
                 <CardFooter className="mt-6 p-0">
                   <Button
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={() => handleSelect(index)}
                     className={`w-full py-2 text-sm font-medium transition-colors duration-200 ${
                       isSelected
                         ? 'bg-blue-600 hover:bg-blue-700 text-white'
@@ -127,7 +127,7 @@ export function Planos() {
 
                 <CardFooter className="mt-6 p-0">
                   <Button
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={() => handleSelect(index)}
                     className={`w-full py-2 text-sm font-medium transition-colors duration-200 ${
                       isSelected
                         ? 'bg-blue-600 hover:bg-blue-700 text-white'

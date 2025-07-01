@@ -3,6 +3,8 @@ import { Button } from '@/components/ui/button.tsx';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+import logo from '@/assets/logo/nous-legal.svg';
+
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -19,7 +21,7 @@ export function Header() {
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold">
             <img
-              src="src/assets/logo/nous-legal.svg"
+              src={logo}
               alt="Nous Legal Logo"
               className="w-full h-full object-contain rounded-full"
             />

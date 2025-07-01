@@ -1,6 +1,8 @@
 import { FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 import { MdEmail, MdPhone } from 'react-icons/md';
 
+import logo from '@/assets/logo/nous-legal.svg';
+
 export function Footer() {
   return (
     <footer className="bg-white border-t border-gray-200 text-gray-900 px-6 md:px-24 py-16">
@@ -9,7 +11,7 @@ export function Footer() {
           <div className="mb-5 flex items-center justify-center md:items-start md:justify-start">
             <div className="w-15 h-15 rounded-full flex items-center justify-center text-base font-bold">
               <img
-                src="src/assets/logo/nous-legal.svg"
+                src={logo}
                 alt="Nous Legal Logo"
                 className="w-full h-full object-contain rounded-full"
               />

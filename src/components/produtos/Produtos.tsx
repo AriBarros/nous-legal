@@ -12,7 +12,7 @@ export function Produtos() {
         {produtos.map((produto, index) => (
           <Card
             key={index}
-            className="rounded-2xl shadow-md transition-transform hover:scale-[1.02] hover:shadow-lg"
+            className="rounded-2xl shadow-md transition-transform hover:scale-[1.02] hover:shadow-lg overflow-hidden p-0"
           >
             <img
               src={produto.imagem}
@@ -28,7 +28,7 @@ export function Produtos() {
               <p className="text-gray-600 text-sm leading-relaxed">
                 {produto.descricao}
               </p>
-              <Button className="w-full bg-[#0d3041] hover:bg-[#164863] text-white text-sm font-medium rounded-xl transition-colors duration-300">
+              <Button className="w-full bg-[#0d3041] hover:bg-[#164863] text-white text-sm font-medium rounded-xl transition-colors duration-300 mb-10">
                 Saiba mais
               </Button>
             </CardContent>

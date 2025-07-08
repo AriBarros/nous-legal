@@ -1,5 +1,5 @@
 import { Header } from '@/components/Header';
-import { Banner } from '@/components/Banner';
+import { Banner } from '@/components/banner/Banner.tsx';
 import { AtendimentoJuridico } from '@/components/AtendimentoJuridico';
 import { Motivos } from '@/components/motivos/Motivos';
 import { Planos } from '@/components/planos/Planos';

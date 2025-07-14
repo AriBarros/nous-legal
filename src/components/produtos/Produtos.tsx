@@ -5,7 +5,7 @@ import { produtos } from '@/components/produtos/produtos-data.ts';
 export function Produtos() {
   return (
     <section className="px-4 py-16 max-w-7xl mx-auto">
-      <h2 className="text-3xl font-bold text-[#0d3041] mb-12 text-center">
+      <h2 className="text-3xl font-bold text-[#060E3D] mb-12 text-center">
         Soluções Inteligentes para Advogados
       </h2>
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -28,7 +28,7 @@ export function Produtos() {
               <p className="text-gray-600 text-sm leading-relaxed">
                 {produto.descricao}
               </p>
-              <Button className="w-full bg-[#0d3041] hover:bg-[#164863] text-white text-sm font-medium rounded-xl transition-colors duration-300 mb-10">
+              <Button className="w-full bg-[#5BC0DE] hover:bg-[#060E3D] text-white text-sm font-medium rounded-xl transition-colors duration-300 mb-10">
                 Saiba mais
               </Button>
             </CardContent>

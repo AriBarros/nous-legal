@@ -20,7 +20,7 @@ export function Planos() {
 
   return (
     <section id="plano" className="bg-[#F3F5F7] py-20 px-4 md:px-20">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-[#060E3D] mb-12">
         Veja todos os nossos <br />
         <span className="text-blue-600">Planos e Preços</span>
       </h2>
@@ -72,7 +72,7 @@ export function Planos() {
                     onClick={() => handleSelect(index)}
                     className={`w-full py-2 text-sm font-medium transition-colors duration-200 ${
                       isSelected
-                        ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                        ? 'bg-[#5BC0DE] hover:bg-[#060E3D] text-white'
                         : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
                     }`}
                   >

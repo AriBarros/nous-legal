@@ -13,7 +13,7 @@ export function Banner() {
   return (
     <>
       <section className="w-full px-4 py-20 text-center max-w-7xl mx-auto">
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-[#060E3D] leading-tight mb-6">
           Automatize sua rotina jurídica com geração de peças e gestão
           documental integrada
         </h1>
@@ -22,7 +22,7 @@ export function Banner() {
           dos seus casos, gera análises e insights valiosos e automatiza a
           criação de peças, permitindo que você foque no que realmente importa.
         </p>
-        <Button className="inline-flex items-center gap-2 bg-blue-600 text-white py-3 sm:py-4 px-6 rounded-lg text-sm sm:text-base font-semibold hover:bg-blue-700 transition">
+        <Button className="inline-flex items-center gap-2 bg-[#5BC0DE] text-white py-3 sm:py-4 px-6 rounded-lg text-sm sm:text-base font-semibold hover:bg-[#060E3D] transition">
           Agende uma demonstração <ArrowUpRight size={16} />
         </Button>
       </section>
@@ -34,9 +34,10 @@ export function Banner() {
               <CarouselPrevious
                 className="
                   absolute left-[-2.5rem] sm:left-[-3.5rem]
+                  cursor-pointer
                   top-1/2 -translate-y-1/2
-                  z-10 bg-[#0d3041] text-white border-none shadow p-2 rounded-full
-                  hover:bg-[#164863]
+                  z-10 bg-[#5BC0DE] text-white border-none shadow p-2 rounded-full
+                  hover:bg-[#060E3D] hover:text-[#FFFFFF]
                 "
               />
               <CarouselContent>
@@ -63,9 +64,10 @@ export function Banner() {
               <CarouselNext
                 className="
                   absolute right-[-2.5rem] sm:right-[-3.5rem]
+                  cursor-pointer
                   top-1/2 -translate-y-1/2
-                  z-10 bg-[#0d3041] text-white border-none shadow p-2 rounded-full
-                  hover:bg-[#164863]
+                  z-10 bg-[#5BC0DE] text-white border-none shadow p-2 rounded-full
+                  hover:bg-[#060E3D] hover:text-[#FFFFFF]
                 "
               />
             </Carousel>
@@ -75,7 +77,7 @@ export function Banner() {
           <p className="text-base sm:text-lg font-medium text-gray-500 mb-2 text-center sm:text-left mt-8">
             De advogados, para advogados
           </p>
-          <p className="text-lg sm:text-2xl font-semibold text-gray-900 leading-snug text-justify">
+          <p className="text-lg sm:text-2xl font-semibold text-[#060E3D] leading-snug text-justify">
             Centralize a gestão de clientes, casos e documentos. Automatize sua
             rotina, da coleta de dados à geração de peças, em um ambiente seguro
             e em conformidade com a LGPD.

@@ -1,19 +1,26 @@
 import { FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 import { MdEmail, MdPhone } from 'react-icons/md';
 
-import logo from '@/assets/logo/nous-legal.svg';
+import logo from '@/assets/logo/nous-legal.png';
 
 export function Footer() {
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="bg-white border-t border-gray-200 text-gray-900 px-6 md:px-24 py-16">
       <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-y-12 gap-x-20 text-center md:text-left">
         <div className="max-w-sm">
           <div className="mb-5 flex items-center justify-center md:items-start md:justify-start">
-            <div className="w-15 h-15 rounded-full flex items-center justify-center text-base font-bold">
+            <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center">
               <img
                 src={logo}
                 alt="Nous Legal Logo"
-                className="w-full h-full object-contain rounded-full"
+                className="w-24 h-24 object-contain"
               />
             </div>
           </div>
@@ -28,24 +35,28 @@ export function Footer() {
           <h4 className="text-xl font-semibold mb-5">Páginas</h4>
           <ul className="space-y-3 text-base">
             <li>
-              <a href="#" className="hover:underline">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">
+              <button
+                onClick={() => scrollToSection('motivo')}
+                className="hover:underline cursor-pointer"
+              >
                 Benefícios
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <button
+                onClick={() => scrollToSection('plano')}
+                className="hover:underline cursor-pointer"
+              >
                 Planos e Preços
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <button
+                onClick={() => scrollToSection('comentarios')}
+                className="hover:underline cursor-pointer"
+              >
                 Depoimentos
-              </a>
+              </button>
             </li>
           </ul>
         </div>

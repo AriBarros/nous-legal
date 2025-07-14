@@ -16,8 +16,8 @@ export function Motivos() {
           <p className="text-lg font-medium text-gray-600 mb-2">
             Nossa Plataforma
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Porque escolher o <br />
+          <h2 className="text-4xl md:text-5xl font-bold text-[#060E3D] mb-6">
+            Por que escolher o <br />
             Nous Legal?
           </h2>
 

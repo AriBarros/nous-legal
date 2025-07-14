@@ -21,7 +21,7 @@ export function AtendimentoJuridico() {
 
       <div className="max-w-xl text-center md:text-left">
         <p className="text-lg text-gray-500 mb-1">Integração completa</p>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-[#060E3D] mb-4">
           Centralize e automatize o atendimento jurídico com o seu assistente
           virtual
         </h2>
@@ -32,25 +32,25 @@ export function AtendimentoJuridico() {
         </p>
         <ul className="text-gray-700 space-y-1.5 mb-6">
           <li className="flex items-start gap-1.5">
-            <Check className="w-5 h-5 text-blue-600" />
+            <Check className="w-5 h-5 text-[#5BC0DE]" />
             Atendimento automatizado 24/7 para dúvidas frequentes.
           </li>
           <li className="flex items-start gap-1.5">
-            <Check className="w-5 h-5 text-blue-600" />
+            <Check className="w-5 h-5 text-[#5BC0DE]" />
             Agendamento de consultas diretamente pelo chatbot.
           </li>
           <li className="flex items-start gap-1.5">
-            <Check className="w-5 h-5 text-blue-600" />
+            <Check className="w-5 h-5 text-[#5BC0DE]" />
             Registro e acompanhamento de solicitações jurídicas em tempo real.
           </li>
           <li className="flex items-start gap-1.5">
-            <Check className="w-5 h-5 text-blue-600" />
+            <Check className="w-5 h-5 text-[#5BC0DE]" />
             Integração com ferramentas como WhatsApp, Messenger e e-mail.
           </li>
         </ul>
         <Button
           size="lg"
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-blue-700 transition"
+          className="bg-[#5BC0DE] text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-[#060E3D] transition"
         >
           Experimente agora
         </Button>

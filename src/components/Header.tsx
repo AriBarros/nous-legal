@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { Button } from '@/components/ui/button.tsx';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import logo from '@/assets/logo/nous-legal.svg';
+import logo from '@/assets/logo/nous.png';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,28 +41,22 @@ export function Header() {
         <nav className="hidden sm:flex items-center gap-10 text-md font-medium">
           <button
             onClick={() => scrollToSection('motivo')}
-            className="hover:underline"
+            className="hover:underline cursor-pointer"
           >
             Benefícios
           </button>
           <button
             onClick={() => scrollToSection('atendimento')}
-            className="hover:underline"
+            className="hover:underline cursor-pointer"
           >
             Como Funciona
           </button>
           <button
             onClick={() => scrollToSection('plano')}
-            className="hover:underline"
+            className="hover:underline cursor-pointer"
           >
             Planos e Preços
           </button>
-          <a href="#" className="text-blue-600 hover:underline">
-            Entrar
-          </a>
-          <Button className="bg-blue-600 text-md text-white hover:bg-blue-700 rounded-lg">
-            Cadastre-se
-          </Button>
         </nav>
       </div>
 
@@ -95,12 +88,6 @@ export function Header() {
               >
                 Planos e Preços
               </button>
-              <a href="#" className="text-blue-600 hover:underline text-center">
-                Entrar
-              </a>
-              <Button className="bg-blue-600 text-md text-white hover:bg-blue-700 rounded-lg w-full">
-                Cadastre-se
-              </Button>
             </nav>
           </motion.div>
         )}

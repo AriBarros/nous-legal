@@ -12,6 +12,6 @@ export const comentarios = [
   {
     text: 'Agora conseguimos atender mais clientes sem perder a qualidade.',
     name: 'Fernanda Silva',
-    role: 'Advogado Jurídico',
+    role: 'Advogada Jurídica',
   },
 ];

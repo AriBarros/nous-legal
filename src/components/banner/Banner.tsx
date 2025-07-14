@@ -8,8 +8,24 @@ import {
   CarouselNext,
 } from '@/components/ui/carousel';
 import { carouselData } from '@/components/banner/banner-data';
+import { useState } from 'react';
+import { ModalAgendar } from '@/components/modais/ModalAgendar.tsx';
 
 export function Banner() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  async function hangleModalAgendar() {
+    setLoading(true);
+    try {
+      alert('Mensagem enviada!');
+      setModalOpen(false);
+    } catch (err) {
+      alert('Erro ao enviar.');
+    }
+    setLoading(false);
+  }
+
   return (
     <>
       <section className="w-full px-4 py-20 text-center max-w-7xl mx-auto">
@@ -22,9 +38,18 @@ export function Banner() {
           dos seus casos, gera análises e insights valiosos e automatiza a
           criação de peças, permitindo que você foque no que realmente importa.
         </p>
-        <Button className="inline-flex items-center gap-2 bg-[#5BC0DE] text-white py-3 sm:py-4 px-6 rounded-lg text-sm sm:text-base font-semibold hover:bg-[#060E3D] transition">
+        <Button
+          onClick={() => setModalOpen(true)}
+          className="inline-flex items-center gap-2 bg-[#5BC0DE] text-white py-3 sm:py-4 px-6 rounded-lg text-sm sm:text-base font-semibold hover:bg-[#060E3D] transition"
+        >
           Agende uma demonstração <ArrowUpRight size={16} />
         </Button>
+        <ModalAgendar
+          open={modalOpen}
+          onOpenChange={setModalOpen}
+          onSubmit={hangleModalAgendar}
+          loading={loading}
+        />
       </section>
 
       <div className="mt-16 sm:mt-32 text-left max-w-4xl mx-auto px-4 sm:px-0">
@@ -33,7 +58,7 @@ export function Banner() {
             <Carousel className="w-full">
               <CarouselPrevious
                 className="
-                  absolute left-[-2.5rem] sm:left-[-3.5rem]
+                  absolute left-2 sm:left-[-3.5rem]
                   cursor-pointer
                   top-1/2 -translate-y-1/2
                   z-10 bg-[#5BC0DE] text-white border-none shadow p-2 rounded-full
@@ -63,7 +88,7 @@ export function Banner() {
               </CarouselContent>
               <CarouselNext
                 className="
-                  absolute right-[-2.5rem] sm:right-[-3.5rem]
+                  absolute right-2 sm:right-[-3.5rem]
                   cursor-pointer
                   top-1/2 -translate-y-1/2
                   z-10 bg-[#5BC0DE] text-white border-none shadow p-2 rounded-full

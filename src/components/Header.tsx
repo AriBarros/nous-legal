@@ -28,8 +28,12 @@ export function Header() {
           <span className="text-xl font-bold">Nous Legal</span>
         </div>
 
-        <div className="sm:hidden">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <div className="sm:hidden flex items-center h-full">
+          <button
+            className="flex items-center justify-center h-12 w-12" // ajuste o h-12 conforme seu header (py-4 = h-16, mas fica bom no mobile)
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Abrir menu"
+          >
             {isMenuOpen ? (
               <ChevronUp className="w-6 h-6" />
             ) : (

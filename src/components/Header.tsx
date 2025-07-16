@@ -30,7 +30,7 @@ export function Header() {
 
         <div className="sm:hidden flex items-center h-full">
           <button
-            className="flex items-center justify-center h-12 w-12" // ajuste o h-12 conforme seu header (py-4 = h-16, mas fica bom no mobile)
+            className="flex items-center justify-center h-12 w-12"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Abrir menu"
           >

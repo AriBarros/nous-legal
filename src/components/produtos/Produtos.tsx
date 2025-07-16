@@ -1,8 +1,24 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { produtos } from '@/components/produtos/produtos-data.ts';
+import { ModalAgendar } from '@/components/modais/ModalAgendar.tsx';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
 export function Produtos() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  async function hangleModalAgendar() {
+    setLoading(true);
+    try {
+      setModalOpen(false);
+    } catch (err) {
+      toast.error('Erro ao enviar. Tente novamente.');
+    }
+    setLoading(false);
+  }
+
   return (
     <section className="px-4 py-16 max-w-7xl mx-auto">
       <h2 className="text-3xl font-bold text-[#060E3D] mb-12 text-center">
@@ -28,9 +44,18 @@ export function Produtos() {
               <p className="text-gray-600 text-sm leading-relaxed">
                 {produto.descricao}
               </p>
-              <Button className="w-full bg-[#5BC0DE] hover:bg-[#060E3D] text-white text-sm font-medium rounded-xl transition-colors duration-300 mb-10">
+              <Button
+                onClick={() => setModalOpen(true)}
+                className="w-full bg-[#5BC0DE] hover:bg-[#060E3D] text-white text-sm font-medium rounded-xl transition-colors duration-300 mb-10"
+              >
                 Saiba mais
               </Button>
+              <ModalAgendar
+                open={modalOpen}
+                onOpenChange={setModalOpen}
+                onSubmit={hangleModalAgendar}
+                loading={loading}
+              />
             </CardContent>
           </Card>
         ))}

@@ -2,8 +2,24 @@ import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button.tsx';
 
 import chatImage from '@/assets/images/whatsapp-chat.svg';
+import { ModalAgendar } from '@/components/modais/ModalAgendar.tsx';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
 export function AtendimentoJuridico() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  async function hangleModalAgendar() {
+    setLoading(true);
+    try {
+      setModalOpen(false);
+    } catch (err) {
+      toast.error('Erro ao enviar. Tente novamente.');
+    }
+    setLoading(false);
+  }
+
   return (
     <div
       id="atendimento"
@@ -49,11 +65,18 @@ export function AtendimentoJuridico() {
           </li>
         </ul>
         <Button
+          onClick={() => setModalOpen(true)}
           size="lg"
           className="bg-[#5BC0DE] text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-[#060E3D] transition"
         >
           Experimente agora
         </Button>
+        <ModalAgendar
+          open={modalOpen}
+          onOpenChange={setModalOpen}
+          onSubmit={hangleModalAgendar}
+          loading={loading}
+        />
       </div>
     </div>
   );

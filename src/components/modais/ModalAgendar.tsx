@@ -18,22 +18,12 @@ import { toast } from 'sonner';
 type ModalAgendarProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onSubmit: (data: {
-    nome: string;
-    email: string;
-    telefone: string;
-    descricao: string;
-    cupom?: string;
-  }) => void;
-  loading: boolean;
   descricaoInicial?: string;
 };
 
 export function ModalAgendar({
   open,
   onOpenChange,
-  onSubmit,
-  loading,
   descricaoInicial = '',
 }: ModalAgendarProps) {
   const [form, setForm] = useState({
@@ -49,6 +39,7 @@ export function ModalAgendar({
     telefone: false,
     descricao: false,
   });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (open) {
@@ -134,7 +125,7 @@ export function ModalAgendar({
     }
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setTouched({
       nome: true,
@@ -157,28 +148,46 @@ export function ModalAgendar({
     }
     if (!isValid) return;
 
-    onSubmit(form);
-    toast.success('Seu contato foi enviado com sucesso!', {
-      description: 'Em breve retornaremos.',
-      duration: 3000,
-    });
+    setLoading(true);
+    try {
+      const response = await fetch(
+        'https://webhookn8n.transformetech.com/webhook/be70646f-602d-4aeb-a1d0-1831632e4e74',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(form),
+        },
+      );
+      if (!response.ok) throw new Error('Erro ao enviar');
 
-    setTimeout(() => {
-      onOpenChange(false);
-      setForm({
-        nome: '',
-        email: '',
-        telefone: '',
-        descricao: '',
-        cupom: '',
+      toast.success('Seu contato foi enviado com sucesso!', {
+        description: 'Em breve retornaremos.',
+        duration: 3000,
       });
-      setTouched({
-        nome: false,
-        email: false,
-        telefone: false,
-        descricao: false,
-      });
-    }, 900);
+
+      setTimeout(() => {
+        onOpenChange(false);
+        setForm({
+          nome: '',
+          email: '',
+          telefone: '',
+          descricao: '',
+          cupom: '',
+        });
+        setTouched({
+          nome: false,
+          email: false,
+          telefone: false,
+          descricao: false,
+        });
+      }, 900);
+    } catch (e) {
+      toast.error(
+        'Não foi possível enviar o formulário. Tente novamente em instantes!',
+      );
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (

@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Send } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motivos } from './motivos-data';
 
@@ -32,7 +29,7 @@ export function Motivos() {
                   className={cn(
                     'cursor-pointer rounded-md p-3 transition-colors',
                     isActive
-                      ? 'bg-muted/40 border-l-2 border-blue-600'
+                      ? 'bg-muted/40 border-l-2 border-[#5BC0DE]'
                       : 'hover:bg-muted/20',
                   )}
                 >
@@ -48,7 +45,7 @@ export function Motivos() {
                           motivo.icon as React.ReactElement<any>,
                           {
                             className: 'w-5 h-5',
-                            color: isActive ? '#2563EB' : undefined,
+                            color: isActive ? '#5BC0DE' : undefined,
                           },
                         )}
                     </div>
@@ -71,17 +68,6 @@ export function Motivos() {
               );
             })}
           </ul>
-        </div>
-
-        <div className="w-full md:w-1/2 flex items-center justify-center">
-          <div className="bg-gray-50 border rounded-xl shadow-sm w-full max-w-md p-6">
-            <div className="flex items-center gap-2">
-              <Input placeholder="Buscar" className="flex-1" />
-              <Button size="icon" variant="outline">
-                <Send className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
         </div>
       </div>
     </section>

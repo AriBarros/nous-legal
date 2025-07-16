@@ -72,7 +72,7 @@ export function Banner() {
                       <img
                         src={slide.img}
                         alt={slide.title}
-                        className="w-full h-[400px] sm:h-[500px] object-cover"
+                        className="w-full h-[45vh] max-h-[600px] object-cover"
                       />
                       <div className="absolute bottom-4 left-0 right-0 px-6">
                         <h3 className="text-xl sm:text-2xl font-bold text-white text-center drop-shadow">

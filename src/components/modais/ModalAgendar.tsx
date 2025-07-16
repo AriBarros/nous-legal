@@ -26,6 +26,7 @@ type ModalAgendarProps = {
     cupom?: string;
   }) => void;
   loading: boolean;
+  descricaoInicial?: string;
 };
 
 export function ModalAgendar({
@@ -33,12 +34,13 @@ export function ModalAgendar({
   onOpenChange,
   onSubmit,
   loading,
+  descricaoInicial = '',
 }: ModalAgendarProps) {
   const [form, setForm] = useState({
     nome: '',
     email: '',
     telefone: '',
-    descricao: '',
+    descricao: descricaoInicial,
     cupom: '',
   });
   const [touched, setTouched] = useState({
@@ -49,6 +51,12 @@ export function ModalAgendar({
   });
 
   useEffect(() => {
+    if (open) {
+      setForm((prev) => ({
+        ...prev,
+        descricao: descricaoInicial || '',
+      }));
+    }
     if (!open) {
       setTimeout(() => {
         setForm({
@@ -66,7 +74,7 @@ export function ModalAgendar({
         });
       }, 100);
     }
-  }, [open]);
+  }, [open, descricaoInicial]);
 
   const errors = {
     nome: touched.nome && !form.nome.trim() ? 'Nome é obrigatório' : '',

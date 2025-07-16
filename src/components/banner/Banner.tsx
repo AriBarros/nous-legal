@@ -16,7 +16,7 @@ export function Banner() {
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  async function hangleModalAgendar() {
+  async function handleModalAgendar() {
     setLoading(true);
     try {
       setModalOpen(false);
@@ -47,7 +47,7 @@ export function Banner() {
         <ModalAgendar
           open={modalOpen}
           onOpenChange={setModalOpen}
-          onSubmit={hangleModalAgendar}
+          onSubmit={handleModalAgendar}
           loading={loading}
         />
       </section>

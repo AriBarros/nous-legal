@@ -50,19 +50,21 @@ export function ModalAgendar({
 
   useEffect(() => {
     if (!open) {
-      setForm({
-        nome: '',
-        email: '',
-        telefone: '',
-        descricao: '',
-        cupom: '',
-      });
-      setTouched({
-        nome: false,
-        email: false,
-        telefone: false,
-        descricao: false,
-      });
+      setTimeout(() => {
+        setForm({
+          nome: '',
+          email: '',
+          telefone: '',
+          descricao: '',
+          cupom: '',
+        });
+        setTouched({
+          nome: false,
+          email: false,
+          telefone: false,
+          descricao: false,
+        });
+      }, 100);
     }
   }, [open]);
 

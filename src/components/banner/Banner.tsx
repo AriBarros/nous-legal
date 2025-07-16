@@ -10,6 +10,7 @@ import {
 import { carouselData } from '@/components/banner/banner-data';
 import { useState } from 'react';
 import { ModalAgendar } from '@/components/modais/ModalAgendar.tsx';
+import { toast } from 'sonner';
 
 export function Banner() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -18,10 +19,9 @@ export function Banner() {
   async function hangleModalAgendar() {
     setLoading(true);
     try {
-      alert('Mensagem enviada!');
       setModalOpen(false);
     } catch (err) {
-      alert('Erro ao enviar.');
+      toast.error('Erro ao enviar. Tente novamente.');
     }
     setLoading(false);
   }

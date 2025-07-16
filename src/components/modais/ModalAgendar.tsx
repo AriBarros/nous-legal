@@ -175,7 +175,16 @@ export function ModalAgendar({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto p-0 bg-gradient-to-br from-[#f8fafc] to-[#e9ecef] rounded-3xl shadow-2xl border-0">
+      <DialogContent
+        className="
+          w-full
+          max-w-[95vw] sm:max-w-md
+          mx-auto
+          max-h-[90vh] overflow-y-auto
+          p-0 bg-gradient-to-br from-[#f8fafc] to-[#e9ecef]
+          rounded-3xl shadow-2xl border-0
+        "
+      >
         <div className="flex flex-col items-center mt-6">
           <div className="bg-white rounded-full shadow-lg mb-3 flex items-center justify-center w-24 h-24 border-4 border-[#5BC0DE]">
             <img

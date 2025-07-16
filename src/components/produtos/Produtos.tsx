@@ -20,7 +20,7 @@ export function Produtos() {
   }
 
   return (
-    <section className="px-4 py-16 max-w-7xl mx-auto">
+    <section className="px-4 py-16 max-w-7xl mx-auto overflow-x-hidden">
       <h2 className="text-3xl font-bold text-[#060E3D] mb-12 text-center">
         Soluções Inteligentes para Advogados
       </h2>

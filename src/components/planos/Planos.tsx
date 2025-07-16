@@ -19,7 +19,10 @@ export function Planos() {
   };
 
   return (
-    <section id="plano" className="bg-[#F3F5F7] py-20 px-4 md:px-20">
+    <section
+      id="plano"
+      className="bg-[#F3F5F7] py-20 px-4 md:px-20 overflow-x-hidden"
+    >
       <h2 className="text-3xl md:text-4xl font-bold text-center text-[#060E3D] mb-12">
         Veja todos os nossos <br />
         <span className="text-blue-600">Planos e Preços</span>

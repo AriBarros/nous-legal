@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-
 import { cn } from '@/lib/utils';
 import { motivos } from './motivos-data';
+import nousLegal from '@/assets/logo/nous-legal.png';
 
 export function Motivos() {
   const [active, setActive] = useState('gestao');
@@ -21,17 +21,21 @@ export function Motivos() {
           <ul className="space-y-4">
             {motivos.map((motivo) => {
               const isActive = active === motivo.id;
-
               return (
                 <li
                   key={motivo.id}
                   onClick={() => setActive(motivo.id)}
                   className={cn(
-                    'cursor-pointer rounded-md p-3 transition-colors',
+                    'cursor-pointer rounded-md p-3 transition-all duration-200',
                     isActive
-                      ? 'bg-muted/40 border-l-2 border-[#5BC0DE]'
+                      ? 'bg-muted/40 border-l-2 border-[#5BC0DE] shadow-md ring-2 ring-[#5BC0DE]/40'
                       : 'hover:bg-muted/20',
                   )}
+                  style={{
+                    boxShadow: isActive
+                      ? '0 2px 16px 0 rgba(91, 192, 222, 0.10)'
+                      : undefined,
+                  }}
                 >
                   <div className="flex items-center gap-3">
                     <div
@@ -68,6 +72,13 @@ export function Motivos() {
               );
             })}
           </ul>
+        </div>
+        <div className="hidden md:flex w-1/2 justify-end items-center mb-8 md:mb-0">
+          <img
+            src={nousLegal}
+            alt="Nous Legal"
+            className="max-w-xs md:max-w-sm lg:max-w-md w-full h-auto"
+          />
         </div>
       </div>
     </section>

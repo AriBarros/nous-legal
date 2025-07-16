@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent, FocusEvent, useEffect } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -10,8 +10,10 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
+import { Gift, User, Mail, Phone, FileText } from 'lucide-react';
 import logo from '@/assets/logo/nous.png';
 import { isValidEmail, maskPhone } from '@/utils';
+import { toast } from 'sonner';
 
 type ModalAgendarProps = {
   open: boolean;
@@ -21,6 +23,7 @@ type ModalAgendarProps = {
     email: string;
     telefone: string;
     descricao: string;
+    cupom?: string;
   }) => void;
   loading: boolean;
 };
@@ -36,25 +39,51 @@ export function ModalAgendar({
     email: '',
     telefone: '',
     descricao: '',
+    cupom: '',
   });
-  const [touched, setTouched] = useState(false);
+  const [touched, setTouched] = useState({
+    nome: false,
+    email: false,
+    telefone: false,
+    descricao: false,
+  });
+
+  useEffect(() => {
+    if (!open) {
+      setForm({
+        nome: '',
+        email: '',
+        telefone: '',
+        descricao: '',
+        cupom: '',
+      });
+      setTouched({
+        nome: false,
+        email: false,
+        telefone: false,
+        descricao: false,
+      });
+    }
+  }, [open]);
 
   const errors = {
-    nome: touched && !form.nome.trim() ? 'Nome é obrigatório' : '',
+    nome: touched.nome && !form.nome.trim() ? 'Nome é obrigatório' : '',
     email:
-      touched && !form.email.trim()
+      touched.email && !form.email.trim()
         ? 'E-mail é obrigatório'
-        : touched && !isValidEmail(form.email)
+        : touched.email && !isValidEmail(form.email)
           ? 'E-mail inválido'
           : '',
     telefone:
-      touched && !form.telefone.trim()
+      touched.telefone && !form.telefone.trim()
         ? 'Telefone é obrigatório'
-        : touched && form.telefone.replace(/\D/g, '').length < 10
+        : touched.telefone && form.telefone.replace(/\D/g, '').length < 10
           ? 'Telefone inválido'
           : '',
     descricao:
-      touched && !form.descricao.trim() ? 'Descrição é obrigatória' : '',
+      touched.descricao && !form.descricao.trim()
+        ? 'Descrição é obrigatória'
+        : '',
   };
 
   const isValid =
@@ -74,18 +103,79 @@ export function ModalAgendar({
     }
   }
 
+  function handleBlur(e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    const { name, value } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+
+    if (name === 'email') {
+      if (!value.trim() || !isValidEmail(value)) {
+        toast.error('Insira um e-mail válido no formato correto.', {
+          description: 'E-mail inválido!',
+        });
+      }
+    }
+    if (name === 'telefone') {
+      setForm((prev) => ({ ...prev, telefone: maskPhone(value) }));
+      if (!value.trim() || value.replace(/\D/g, '').length < 10) {
+        toast.error('Preencha um telefone válido (com DDD).', {
+          description: 'Telefone inválido!',
+        });
+      }
+    }
+  }
+
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setTouched(true);
+    setTouched({
+      nome: true,
+      email: true,
+      telefone: true,
+      descricao: true,
+    });
+
+    if (!form.email.trim() || !isValidEmail(form.email)) {
+      toast.error('Insira um e-mail válido no formato correto.', {
+        description: 'E-mail inválido!',
+      });
+      return;
+    }
+    if (!form.telefone.trim() || form.telefone.replace(/\D/g, '').length < 10) {
+      toast.error('Preencha um telefone válido (com DDD).', {
+        description: 'Telefone inválido!',
+      });
+      return;
+    }
     if (!isValid) return;
+
     onSubmit(form);
+    toast.success('Seu contato foi enviado com sucesso!', {
+      description: 'Em breve retornaremos.',
+      duration: 3000,
+    });
+
+    setTimeout(() => {
+      onOpenChange(false);
+      setForm({
+        nome: '',
+        email: '',
+        telefone: '',
+        descricao: '',
+        cupom: '',
+      });
+      setTouched({
+        nome: false,
+        email: false,
+        telefone: false,
+        descricao: false,
+      });
+    }, 900);
   }
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md p-0">
-        <div className="flex flex-col items-center mt-4">
-          <div className="bg-white rounded-full shadow mb-2 flex items-center justify-center w-20 h-20">
+      <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto p-0 bg-gradient-to-br from-[#f8fafc] to-[#e9ecef] rounded-3xl shadow-2xl border-0">
+        <div className="flex flex-col items-center mt-6">
+          <div className="bg-white rounded-full shadow-lg mb-3 flex items-center justify-center w-24 h-24 border-4 border-[#5BC0DE]">
             <img
               src={logo}
               alt="Nous Legal Logo"
@@ -93,88 +183,125 @@ export function ModalAgendar({
             />
           </div>
           <DialogHeader className="w-full flex flex-col items-center text-center">
-            <DialogTitle className="text-2xl font-bold mt-2 mb-1 text-[#060E3D]">
-              Entre em contato
+            <DialogTitle className="text-3xl font-extrabold mt-2 mb-1 text-[#060E3D] tracking-tight drop-shadow">
+              Fale com a Nous Legal
             </DialogTitle>
-            <DialogDescription className="text-gray-600 mb-3 px-2">
-              <span className="text-red-500 font-semibold">*</span> Todos os
-              campos são obrigatórios.
+            <DialogDescription className="text-gray-500 mb-5 px-2 text-base font-normal">
+              <span className="text-red-500 font-bold">*</span> Todos os campos
+              são obrigatórios
             </DialogDescription>
           </DialogHeader>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-4 px-4 pb-4">
-          <div>
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white/90 shadow-lg rounded-2xl p-6 pt-4 mx-3 mb-4 space-y-5 max-h-[70vh] overflow-y-auto"
+        >
+          <div className="relative">
+            <User className="absolute left-3 top-3 text-[#5BC0DE]" size={18} />
             <Input
               name="nome"
               placeholder="Nome *"
               value={form.nome}
               onChange={handleChange}
+              onBlur={handleBlur}
               required
               autoFocus
               aria-invalid={!!errors.nome}
-              className={errors.nome ? 'border-red-500' : ''}
+              className={`pl-10 rounded-2xl ${errors.nome ? 'border-2 border-red-500 focus:border-red-500 focus:ring-0' : ''}`}
             />
             {errors.nome && (
-              <span className="text-red-500 text-xs">{errors.nome}</span>
+              <span className="text-red-500 text-xs animate-pulse pl-2">
+                {errors.nome}
+              </span>
             )}
           </div>
-          <div>
+          <div className="relative">
+            <Mail className="absolute left-3 top-3 text-[#5BC0DE]" size={18} />
             <Input
               name="email"
               type="email"
               placeholder="E-mail *"
               value={form.email}
               onChange={handleChange}
+              onBlur={handleBlur}
               required
               aria-invalid={!!errors.email}
-              className={errors.email ? 'border-red-500' : ''}
+              className={`pl-10 rounded-2xl ${errors.email ? 'border-2 border-red-500 focus:border-red-500 focus:ring-0' : ''}`}
             />
             {errors.email && (
-              <span className="text-red-500 text-xs">{errors.email}</span>
+              <span className="text-red-500 text-xs animate-pulse pl-2">
+                {errors.email}
+              </span>
             )}
           </div>
-          <div>
+          <div className="relative">
+            <Phone className="absolute left-3 top-3 text-[#5BC0DE]" size={18} />
             <Input
               name="telefone"
               placeholder="Telefone *"
               value={form.telefone}
               onChange={handleChange}
+              onBlur={handleBlur}
               maxLength={15}
               required
               aria-invalid={!!errors.telefone}
-              className={errors.telefone ? 'border-red-500' : ''}
+              className={`pl-10 rounded-2xl ${errors.telefone ? 'border-2 border-red-500 focus:border-red-500 focus:ring-0' : ''}`}
               inputMode="tel"
             />
             {errors.telefone && (
-              <span className="text-red-500 text-xs">{errors.telefone}</span>
+              <span className="text-red-500 text-xs animate-pulse pl-2">
+                {errors.telefone}
+              </span>
             )}
           </div>
-          <div>
+          <div className="relative">
+            <FileText
+              className="absolute left-3 top-3 text-[#5BC0DE]"
+              size={18}
+            />
             <Textarea
               name="descricao"
               placeholder="Descreva sua necessidade *"
               value={form.descricao}
               onChange={handleChange}
+              onBlur={handleBlur}
               required
               aria-invalid={!!errors.descricao}
-              className={errors.descricao ? 'border-red-500' : ''}
+              className={`pl-10 rounded-2xl resize-y max-h-64 textarea-vertical-only ${errors.descricao ? 'border-2 border-red-500 focus:border-red-500 focus:ring-0' : ''}`}
               rows={4}
             />
             {errors.descricao && (
-              <span className="text-red-500 text-xs">{errors.descricao}</span>
+              <span className="text-red-500 text-xs animate-pulse pl-2">
+                {errors.descricao}
+              </span>
             )}
+          </div>
+          <div className="relative">
+            <Gift className="absolute left-3 top-3 text-[#a2a2a2]" size={18} />
+            <Input
+              name="cupom"
+              placeholder="Cupom (opcional)"
+              value={form.cupom}
+              onChange={handleChange}
+              autoComplete="off"
+              maxLength={32}
+              className="pl-10 rounded-2xl"
+            />
+            <span className="text-gray-400 text-xs pl-2">
+              Possui código promocional?
+            </span>
           </div>
           <DialogFooter>
             <Button
               type="submit"
-              className="w-full mt-2 bg-[#5BC0DE] text-white font-semibold hover:bg-[#060E3D] transition"
+              className="w-full mt-3 h-12 text-base font-semibold rounded-2xl bg-gradient-to-r from-[#5BC0DE] to-[#0B3256] hover:from-[#060E3D] hover:to-[#5BC0DE] shadow-lg transition-all duration-200"
               disabled={!isValid || loading}
             >
               {loading ? (
-                <>
-                  <span className="animate-spin mr-2 h-4 w-4 inline-block border-2 border-white border-t-transparent rounded-full" />
+                <span className="flex items-center justify-center">
+                  <span className="animate-spin mr-2 h-5 w-5 inline-block border-2 border-white border-t-transparent rounded-full" />
                   Enviando...
-                </>
+                </span>
               ) : (
                 'Enviar'
               )}

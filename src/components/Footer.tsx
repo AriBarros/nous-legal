@@ -62,8 +62,11 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="max-w-xs">
-          <h4 className="text-xl font-semibold mb-5">Contato</h4>
+        <div className="max-w-xs flex gap-5 flex-col">
+          <h4 className="text-xl font-semibold">Contato</h4>
+          <p className="text-base">
+            Ficou com alguma dúvida? Entre em contato conosco!
+          </p>
           <div className="flex items-center justify-center md:justify-start gap-2 text-base mb-2">
             <MdEmail className="w-5 h-5" />
             <span>contato@nouslegal.com.br</span>

@@ -15,16 +15,6 @@ import { ModalAgendar } from '@/components/modais/ModalAgendar.tsx';
 export function Planos() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  function handleModalAgendar() {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setModalOpen(false);
-      setSelectedIndex(null);
-    }, 2000);
-  }
 
   function handleSelect(index: number) {
     setSelectedIndex(index);
@@ -59,8 +49,16 @@ export function Planos() {
               <CardTitle className="text-xl font-semibold text-gray-900">
                 {plan.title}
               </CardTitle>
-              <CardDescription className="text-3xl font-bold text-gray-900 mt-2">
-                {plan.price}
+              <CardDescription className="flex flex-col items-start text-3xl font-bold text-gray-900 mt-2">
+                <span className="text-xl text-gray-400 line-through">
+                  {plan.price}
+                </span>
+                <span className="text-4xl font-extrabold text-[#5BC0DE]">
+                  {plan.promoPrice}
+                </span>
+                <span className="text-xs font-semibold text-[#5BC0DE] opacity-80 mt-5">
+                  {plan.promoMsg}
+                </span>
               </CardDescription>
             </CardHeader>
 
@@ -98,8 +96,6 @@ export function Planos() {
       <ModalAgendar
         open={modalOpen}
         onOpenChange={setModalOpen}
-        onSubmit={handleModalAgendar}
-        loading={loading}
         descricaoInicial={`Estou interessado no plano: ${plan.title}. Gostaria de saber mais detalhes e agendar uma demonstração.`}
       />
     </section>

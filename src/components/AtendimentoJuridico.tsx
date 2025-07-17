@@ -4,21 +4,9 @@ import { Button } from '@/components/ui/button.tsx';
 import chatImage from '@/assets/images/whatsapp-chat.svg';
 import { ModalAgendar } from '@/components/modais/ModalAgendar.tsx';
 import { useState } from 'react';
-import { toast } from 'sonner';
 
 export function AtendimentoJuridico() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  async function handleModalAgendar() {
-    setLoading(true);
-    try {
-      setModalOpen(false);
-    } catch (err) {
-      toast.error('Erro ao enviar. Tente novamente.');
-    }
-    setLoading(false);
-  }
 
   return (
     <div
@@ -71,12 +59,7 @@ export function AtendimentoJuridico() {
         >
           Experimente agora
         </Button>
-        <ModalAgendar
-          open={modalOpen}
-          onOpenChange={setModalOpen}
-          onSubmit={handleModalAgendar}
-          loading={loading}
-        />
+        <ModalAgendar open={modalOpen} onOpenChange={setModalOpen} />
       </div>
     </div>
   );

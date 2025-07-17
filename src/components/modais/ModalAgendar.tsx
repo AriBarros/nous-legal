@@ -10,7 +10,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Gift, User, Mail, Phone, FileText } from 'lucide-react';
+import { User, Mail, Phone, FileText } from 'lucide-react';
 import logo from '@/assets/logo/nous.png';
 import { isValidEmail, maskPhone } from '@/utils';
 import { toast } from 'sonner';
@@ -31,7 +31,6 @@ export function ModalAgendar({
     email: '',
     telefone: '',
     descricao: descricaoInicial,
-    cupom: '',
   });
   const [touched, setTouched] = useState({
     nome: false,
@@ -55,7 +54,6 @@ export function ModalAgendar({
           email: '',
           telefone: '',
           descricao: '',
-          cupom: '',
         });
         setTouched({
           nome: false,
@@ -172,7 +170,6 @@ export function ModalAgendar({
           email: '',
           telefone: '',
           descricao: '',
-          cupom: '',
         });
         setTouched({
           nome: false,
@@ -303,21 +300,6 @@ export function ModalAgendar({
                 {errors.descricao}
               </span>
             )}
-          </div>
-          <div className="relative">
-            <Gift className="absolute left-3 top-3 text-[#a2a2a2]" size={18} />
-            <Input
-              name="cupom"
-              placeholder="Cupom (opcional)"
-              value={form.cupom}
-              onChange={handleChange}
-              autoComplete="off"
-              maxLength={32}
-              className="pl-10 rounded-2xl"
-            />
-            <span className="text-gray-400 text-xs pl-2">
-              Possui código promocional?
-            </span>
           </div>
           <DialogFooter>
             <Button

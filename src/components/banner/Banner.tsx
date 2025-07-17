@@ -10,21 +10,9 @@ import {
 import { carouselData } from '@/components/banner/banner-data';
 import { useState } from 'react';
 import { ModalAgendar } from '@/components/modais/ModalAgendar.tsx';
-import { toast } from 'sonner';
 
 export function Banner() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  async function handleModalAgendar() {
-    setLoading(true);
-    try {
-      setModalOpen(false);
-    } catch (err) {
-      toast.error('Erro ao enviar. Tente novamente.');
-    }
-    setLoading(false);
-  }
 
   return (
     <>
@@ -44,12 +32,7 @@ export function Banner() {
         >
           Agende uma demonstração <ArrowUpRight size={16} />
         </Button>
-        <ModalAgendar
-          open={modalOpen}
-          onOpenChange={setModalOpen}
-          onSubmit={handleModalAgendar}
-          loading={loading}
-        />
+        <ModalAgendar open={modalOpen} onOpenChange={setModalOpen} />
       </section>
 
       <div className="mt-16 sm:mt-32 text-left max-w-4xl mx-auto px-4 sm:px-0">

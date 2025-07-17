@@ -3,21 +3,9 @@ import { Button } from '@/components/ui/button';
 import { produtos } from '@/components/produtos/produtos-data.ts';
 import { ModalAgendar } from '@/components/modais/ModalAgendar.tsx';
 import { useState } from 'react';
-import { toast } from 'sonner';
 
 export function Produtos() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  async function hangleModalAgendar() {
-    setLoading(true);
-    try {
-      setModalOpen(false);
-    } catch (err) {
-      toast.error('Erro ao enviar. Tente novamente.');
-    }
-    setLoading(false);
-  }
 
   return (
     <section className="px-4 py-16 max-w-7xl mx-auto overflow-x-hidden">
@@ -50,12 +38,7 @@ export function Produtos() {
               >
                 Saiba mais
               </Button>
-              <ModalAgendar
-                open={modalOpen}
-                onOpenChange={setModalOpen}
-                onSubmit={hangleModalAgendar}
-                loading={loading}
-              />
+              <ModalAgendar open={modalOpen} onOpenChange={setModalOpen} />
             </CardContent>
           </Card>
         ))}

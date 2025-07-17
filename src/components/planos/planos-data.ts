@@ -4,12 +4,15 @@ export interface Plano {
   features: string[];
   highlight?: boolean;
   disabled?: boolean;
+  promoPrice?: string;
+  promoMsg?: string;
 }
-
 export const plans: Plano[] = [
   {
     title: 'NOUS Performance Jurídica',
     price: 'R$ 5.000,00',
+    promoPrice: 'R$ 2.500,00',
+    promoMsg: 'Condição exclusiva até 19/07/2025!',
     features: [
       'Transformação digital completa do seu escritório jurídico em até 40 horas.',
       'Diagnóstico de gargalos e plano de automação sob medida.',

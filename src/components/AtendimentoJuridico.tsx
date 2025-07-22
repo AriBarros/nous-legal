@@ -34,23 +34,35 @@ export function AtendimentoJuridico() {
           tempo da sua equipe. Automatize tarefas repetitivas e foque no que
           realmente importa: as estratégias do seu caso.
         </p>
-        <ul className="text-gray-700 space-y-1.5 mb-6">
-          <li className="flex items-start gap-1.5">
-            <Check className="w-5 h-5 text-[#5BC0DE]" />
-            Atendimento automatizado 24 horas por dia, 7 dias por semana de
-            casos simples aos mais complexos.
+        <ul className="text-gray-700 space-y-1 mb-6">
+          <li className="flex items-start gap-1 sm:gap-2">
+            <span>
+              <Check className="w-5 h-5 text-[#5BC0DE] mt-1" />
+            </span>
+            <span>
+              Atendimento automatizado 24 horas por dia, 7 dias por semana de
+              casos simples aos mais complexos.
+            </span>
           </li>
-          <li className="flex items-start gap-1.5">
-            <Check className="w-5 h-5 text-[#5BC0DE]" />
-            Agendamento de consultas diretamente pelo agente de IA.
+          <li className="flex items-start gap-2">
+            <span>
+              <Check className="w-5 h-5 text-[#5BC0DE] mt-1" />
+            </span>
+            <span>Agendamento de consultas diretamente pelo agente de IA.</span>
           </li>
-          <li className="flex items-start gap-1.5">
-            <Check className="w-5 h-5 text-[#5BC0DE]" />
-            Registro e acompanhamento em tempo real.
+          <li className="flex items-start gap-2">
+            <span>
+              <Check className="w-5 h-5 text-[#5BC0DE] mt-1" />
+            </span>
+            <span>Registro e acompanhamento em tempo real.</span>
           </li>
-          <li className="flex items-start gap-1.5">
-            <Check className="w-5 h-5 text-[#5BC0DE]" />
-            Integração com ferramentas como WhatsApp, Messenger e e-mail.
+          <li className="flex items-start gap-2">
+            <span>
+              <Check className="w-5 h-5 text-[#5BC0DE] mt-1" />
+            </span>
+            <span>
+              Integração com ferramentas como WhatsApp, Messenger e e-mail.
+            </span>
           </li>
         </ul>
         <Button

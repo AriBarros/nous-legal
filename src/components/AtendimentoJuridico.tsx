@@ -34,7 +34,7 @@ export function AtendimentoJuridico() {
           tempo da sua equipe. Automatize tarefas repetitivas e foque no que
           realmente importa: as estratégias do seu caso.
         </p>
-        <ul className="text-gray-700 space-y-1 mb-6">
+        <ul className="text-gray-700 space-y-5 mb-6">
           <li className="flex items-start gap-1 sm:gap-2">
             <span>
               <Check className="w-5 h-5 text-[#5BC0DE] mt-1" />

@@ -11,8 +11,6 @@ export const plans: Plano[] = [
   {
     title: 'NOUS Performance Jurídica',
     price: 'R$ 5.000,00',
-    promoPrice: 'R$ 2.500,00',
-    promoMsg: 'Condição exclusiva até 21/07/2025!',
     features: [
       'Transformação digital completa do seu escritório jurídico em até 40 horas.',
       'Diagnóstico de gargalos e plano de automação sob medida.',

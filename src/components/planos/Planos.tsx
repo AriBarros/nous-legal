@@ -49,20 +49,34 @@ export function Planos() {
               <CardTitle className="text-xl font-semibold text-gray-900">
                 {plan.title}
               </CardTitle>
-              <CardDescription className="flex flex-col items-start text-3xl font-bold text-gray-900 mt-2">
-                <span className="text-xl text-gray-400 line-through">
-                  {plan.price}
-                </span>
-                <span className="text-4xl font-extrabold text-[#5BC0DE]">
-                  {plan.promoPrice}
-                </span>
-                <span className="text-xs font-semibold text-[#5BC0DE] opacity-80 mt-5">
-                  {plan.promoMsg}
-                </span>
+              <CardDescription
+                className={`flex flex-col w-full ${
+                  plan.promoPrice
+                    ? 'items-start mt-2'
+                    : 'items-center justify-center min-h-[100px] py-2'
+                }`}
+              >
+                {plan.promoPrice ? (
+                  <>
+                    <span className="text-xl text-gray-400 line-through">
+                      {plan.price}
+                    </span>
+                    <span className="text-4xl font-extrabold text-[#5BC0DE]">
+                      {plan.promoPrice}
+                    </span>
+                    <span className="text-xs font-semibold text-[#5BC0DE] opacity-80 mt-5">
+                      {plan.promoMsg}
+                    </span>
+                  </>
+                ) : (
+                  <span className="text-4xl font-extrabold text-[#5BC0DE]">
+                    {plan.price}
+                  </span>
+                )}
               </CardDescription>
             </CardHeader>
 
-            <CardContent className="space-y-3 p-0 mt-12">
+            <CardContent className="space-y-3 p-0 mt-5">
               {plan.features.map((feature, i) => (
                 <div
                   key={i}

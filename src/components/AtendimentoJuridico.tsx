@@ -37,15 +37,16 @@ export function AtendimentoJuridico() {
         <ul className="text-gray-700 space-y-1.5 mb-6">
           <li className="flex items-start gap-1.5">
             <Check className="w-5 h-5 text-[#5BC0DE]" />
-            Atendimento automatizado 24/7 para dúvidas frequentes.
+            Atendimento automatizado 24 horas por dia, 7 dias por semana de
+            casos simples aos mais complexos.
           </li>
           <li className="flex items-start gap-1.5">
             <Check className="w-5 h-5 text-[#5BC0DE]" />
-            Agendamento de consultas diretamente pelo chatbot.
+            Agendamento de consultas diretamente pelo agente de IA.
           </li>
           <li className="flex items-start gap-1.5">
             <Check className="w-5 h-5 text-[#5BC0DE]" />
-            Registro e acompanhamento de solicitações jurídicas em tempo real.
+            Registro e acompanhamento em tempo real.
           </li>
           <li className="flex items-start gap-1.5">
             <Check className="w-5 h-5 text-[#5BC0DE]" />

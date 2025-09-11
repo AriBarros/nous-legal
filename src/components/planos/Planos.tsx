@@ -11,17 +11,19 @@ import { plans } from './planos-data';
 import { useState } from 'react';
 import { CheckCircle, X } from 'lucide-react';
 import { ModalAgendar } from '@/components/modais/ModalAgendar.tsx';
+import { ModalTermosLicenca } from '@/components/modais/ModalTermosLicenca.tsx';
 
 export function Planos() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [termsModalOpen, setTermsModalOpen] = useState(false);
   const [selectedPlanIndex, setSelectedPlanIndex] = useState<number | null>(null);
 
   function handleButtonClick(index: number) {
     const plan = plans[index];
     
-    // Se for o plano beta (gratuito), redireciona para o dashboard
+    // Se for o plano beta (gratuito), abre o modal de termos
     if (plan.isBeta && plan.price === 'Gratuito') {
-      window.open('https://nous-escritorio-online.web.app/dashboard', '_blank');
+      setTermsModalOpen(true);
       return;
     }
     
@@ -52,10 +54,10 @@ export function Planos() {
                 </span>
               </div>
             )}
-            {plan.freeTrialDays && (
+            {plan.earlyAccess && (
               <div className="absolute -top-3 left-4">
                 <span className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                  {plan.freeTrialDays} DIAS GRÁTIS
+                  ACESSO ANTECIPADO
                 </span>
               </div>
             )}
@@ -134,6 +136,13 @@ export function Planos() {
         open={modalOpen}
         onOpenChange={setModalOpen}
         descricaoInicial={`Estou interessado no plano: ${selectedPlanIndex !== null ? plans[selectedPlanIndex].title : 'um dos planos'}. Gostaria de saber mais detalhes e agendar uma demonstração.`}
+      />
+      <ModalTermosLicenca
+        open={termsModalOpen}
+        onOpenChange={setTermsModalOpen}
+        onAccept={() => {
+          window.open('https://nous-escritorio-online.web.app/dashboard', '_blank');
+        }}
       />
     </section>
   );

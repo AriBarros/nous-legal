@@ -7,7 +7,7 @@ export interface Plano {
   promoPrice?: string;
   promoMsg?: string;
   isBeta?: boolean;
-  freeTrialDays?: number;
+  earlyAccess?: boolean;
 }
 export const plans: Plano[] = [
   {
@@ -39,6 +39,6 @@ export const plans: Plano[] = [
       'INDISPONÍVEL: Quadro Kanban para gestão de mensagens',
     ],
     isBeta: true,
-    freeTrialDays: 7,
+    earlyAccess: true,
   },
 ];

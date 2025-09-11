@@ -55,15 +55,17 @@ export function Banner() {
                       <img
                         src={slide.img}
                         alt={slide.title}
-                        className="w-full h-[45vh] max-h-[600px] object-cover"
+                        className="w-full h-[70vh] max-h-[900px] object-cover"
                       />
                       <div className="absolute bottom-4 left-0 right-0 px-6">
-                        <h3 className="text-xl sm:text-2xl font-bold text-white text-center drop-shadow">
-                          {slide.title}
-                        </h3>
-                        <p className="text-gray-200 text-base sm:text-lg text-center drop-shadow">
-                          {slide.desc}
-                        </p>
+                        <div className="bg-white/20 backdrop-blur-sm rounded-md px-3 py-2 mx-4">
+                          <h3 className="text-xl sm:text-2xl font-bold text-white text-center drop-shadow">
+                            {slide.title}
+                          </h3>
+                          <p className="text-gray-100 text-base sm:text-lg text-center drop-shadow">
+                            {slide.desc}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </CarouselItem>

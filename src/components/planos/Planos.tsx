@@ -9,21 +9,25 @@ import {
 import { Button } from '@/components/ui/button';
 import { plans } from './planos-data';
 import { useState } from 'react';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, X } from 'lucide-react';
 import { ModalAgendar } from '@/components/modais/ModalAgendar.tsx';
 
 export function Planos() {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [selectedPlanIndex, setSelectedPlanIndex] = useState<number | null>(null);
 
-  function handleSelect(index: number) {
-    setSelectedIndex(index);
+  function handleButtonClick(index: number) {
+    const plan = plans[index];
+    
+    // Se for o plano beta (gratuito), redireciona para o dashboard
+    if (plan.isBeta && plan.price === 'Gratuito') {
+      window.open('https://nous-escritorio-online.web.app/dashboard', '_blank');
+      return;
+    }
+    
+    setSelectedPlanIndex(index);
     setModalOpen(true);
   }
-
-  const plan = plans.find((p) => p.highlight);
-
-  if (!plan) return null;
 
   return (
     <section
@@ -35,20 +39,31 @@ export function Planos() {
         <span className="text-[#5BC0DE]">Planos e Preços</span>
       </h2>
 
-      <div className="flex justify-center w-full">
-        <Card
-          onClick={() => handleSelect(0)}
-          className={`flex flex-col justify-between min-w-[320px] max-w-[400px] mx-auto p-6 rounded-2xl transition-all duration-300 border-2 cursor-pointer ${
-            selectedIndex === 0
-              ? 'border-[#5BC0DE] shadow-md'
-              : 'border-transparent hover:border-gray-300'
-          }`}
-        >
-          <div>
-            <CardHeader className="p-0 mb-4">
-              <CardTitle className="text-xl font-semibold text-gray-900">
-                {plan.title}
-              </CardTitle>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+        {plans.map((plan, index) => (
+          <Card
+            key={index}
+            className={`group relative flex flex-col justify-between min-w-[320px] max-w-[400px] mx-auto p-6 rounded-2xl transition-all duration-300 border-2 border-transparent hover:border-[#5BC0DE] hover:shadow-md ${plan.highlight ? 'ring-2 ring-[#5BC0DE] ring-opacity-50' : ''}`}
+          >
+            {plan.isBeta && (
+              <div className="absolute -top-3 -right-3">
+                <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                  BETA
+                </span>
+              </div>
+            )}
+            {plan.freeTrialDays && (
+              <div className="absolute -top-3 left-4">
+                <span className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                  {plan.freeTrialDays} DIAS GRÁTIS
+                </span>
+              </div>
+            )}
+            <div>
+              <CardHeader className="p-0 mb-4">
+                <CardTitle className="text-xl font-semibold text-gray-900">
+                  {plan.title}
+                </CardTitle>
               <CardDescription
                 className={`flex flex-col w-full ${
                   plan.promoPrice
@@ -77,40 +92,48 @@ export function Planos() {
             </CardHeader>
 
             <CardContent className="space-y-3 p-0 mt-5">
-              {plan.features.map((feature, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-2 text-base text-gray-700"
-                >
-                  <CheckCircle
-                    className={`w-5 h-5 min-w-[20px] ${
-                      selectedIndex === 0 ? 'text-[#5BC0DE]' : 'text-gray-400'
-                    }`}
-                  />
-                  <span>{feature}</span>
-                </div>
-              ))}
+              {plan.features.map((feature, i) => {
+                const isUnavailable = feature.startsWith('INDISPONÍVEL:');
+                const displayText = isUnavailable ? feature.replace('INDISPONÍVEL: ', '') : feature;
+                
+                return (
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 text-base text-gray-700"
+                  >
+                    {isUnavailable ? (
+                      <X
+                        className="w-5 h-5 min-w-[20px] transition-colors duration-300 text-red-400 group-hover:text-red-500"
+                      />
+                    ) : (
+                      <CheckCircle
+                        className="w-5 h-5 min-w-[20px] transition-colors duration-300 text-gray-400 group-hover:text-[#5BC0DE]"
+                      />
+                    )}
+                    <span className={isUnavailable ? 'text-gray-500' : ''}>{displayText}</span>
+                  </div>
+                );
+              })}
             </CardContent>
           </div>
 
           <CardFooter className="mt-6 p-0">
             <Button
-              onClick={() => handleSelect(0)}
-              className={`w-full py-2 text-sm font-medium transition-colors duration-200 ${
-                selectedIndex === 0
-                  ? 'bg-[#5BC0DE] hover:bg-[#060E3D] text-white'
-                  : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
-              }`}
+              onClick={() => handleButtonClick(index)}
+              className="w-full py-2 text-sm font-medium transition-colors duration-200 bg-[#5BC0DE] hover:bg-[#060E3D] text-white"
             >
-              {selectedIndex === 0 ? 'Selecionado' : 'Escolher plano'}
+              {plan.isBeta && plan.price === 'Gratuito' 
+                ? 'Acessar Plataforma' 
+                : 'Contrate agora'}
             </Button>
           </CardFooter>
         </Card>
+        ))}
       </div>
       <ModalAgendar
         open={modalOpen}
         onOpenChange={setModalOpen}
-        descricaoInicial={`Estou interessado no plano: ${plan.title}. Gostaria de saber mais detalhes e agendar uma demonstração.`}
+        descricaoInicial={`Estou interessado no plano: ${selectedPlanIndex !== null ? plans[selectedPlanIndex].title : 'um dos planos'}. Gostaria de saber mais detalhes e agendar uma demonstração.`}
       />
     </section>
   );

@@ -51,14 +51,6 @@ export function Footer() {
                 Planos e Preços
               </button>
             </li>
-            <li>
-              <button
-                onClick={() => scrollToSection('comentarios')}
-                className="hover:underline cursor-pointer"
-              >
-                Depoimentos
-              </button>
-            </li>
           </ul>
         </div>
 

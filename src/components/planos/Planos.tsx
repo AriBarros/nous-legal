@@ -143,7 +143,7 @@ export function Planos() {
         open={termsModalOpen}
         onOpenChange={setTermsModalOpen}
         onAccept={() => {
-          window.open('https://nous-escritorio-online.web.app/dashboard', '_blank');
+          window.open('https://plataforma.nouslegal.com.br/', '_blank');
         }}
       />
     </section>

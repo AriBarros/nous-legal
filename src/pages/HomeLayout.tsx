@@ -12,7 +12,10 @@ export function HomeLayout() {
   return (
     <>
       <Toaster position="top-center" richColors closeButton />
-      <Header />
+      <div className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/70">
+        <Header />
+      </div>
+      <div className="h-24" />
       <Banner />
       <AtendimentoJuridico />
       <Produtos />

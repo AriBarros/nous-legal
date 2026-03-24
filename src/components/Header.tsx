@@ -15,7 +15,7 @@ export function Header() {
   };
 
   return (
-    <header className="mx-4 sm:mx-8 lg:mx-auto mt-6 px-4 sm:px-6 lg:px-8 py-4 shadow-sm border rounded-xl bg-white max-w-7xl">
+    <header className="mx-4 sm:mx-8 lg:mx-auto mt-3 px-4 sm:px-6 lg:px-8 py-3 border border-white/40 rounded-2xl bg-white/80 shadow-lg shadow-black/5 max-w-7xl backdrop-blur-sm">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold">

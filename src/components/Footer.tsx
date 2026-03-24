@@ -89,7 +89,7 @@ export function Footer() {
       </div>
 
       <div className="mt-12 border-t border-gray-200 pt-6 text-center text-base text-gray-600 font-semibold">
-        ©2025 Nous Legal® Todos direitos reservados.
+        ©{new Date().getFullYear()} Nous Legal® Todos direitos reservados.
       </div>
       </div>
     </footer>

@@ -15,9 +15,9 @@ export function Footer() {
   return (
     <footer className="bg-white border-t border-gray-200 text-gray-900 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-y-12 gap-x-20 text-center md:text-left">
+      <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-y-8 sm:gap-y-12 gap-x-20 text-center md:text-left">
         <div className="max-w-sm">
-          <div className="mb-5 flex items-center justify-center md:items-start md:justify-start">
+          <div className="mb-5 flex items-center justify-center md:justify-start">
             <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center">
               <img
                 src={logo}

@@ -6,10 +6,10 @@ export function Cases() {
   return (
     <section
       id="cases"
-      className="bg-white py-20 overflow-x-hidden"
+      className="bg-white py-10 sm:py-20 overflow-x-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-left sm:text-center mb-8 sm:mb-12">
           <p className="text-lg font-medium text-gray-600 mb-2">
             Resultados Reais
           </p>

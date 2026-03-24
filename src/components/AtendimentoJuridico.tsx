@@ -11,7 +11,7 @@ export function AtendimentoJuridico() {
   return (
     <div
       id="atendimento"
-      className="bg-[#F3F5F7] py-16 mt-40"
+      className="bg-[#F3F5F7] py-8 sm:py-16 mt-16 sm:mt-40"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center gap-y-10 md:gap-x-20">
       <div className="relative max-w-md w-full">
@@ -24,7 +24,7 @@ export function AtendimentoJuridico() {
         </div>
       </div>
 
-      <div className="max-w-xl text-center md:text-left">
+      <div className="max-w-xl text-left">
         <p className="text-lg text-gray-500 mb-1">Integração completa</p>
         <h2 className="text-3xl md:text-4xl font-bold text-[#060E3D] mb-4">
           Centralize e automatize o atendimento jurídico com o seu assistente
@@ -69,7 +69,7 @@ export function AtendimentoJuridico() {
         <Button
           onClick={() => setModalOpen(true)}
           size="lg"
-          className="bg-[#5BC0DE] text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-[#060E3D] transition"
+          className="bg-[#5BC0DE] text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-[#060E3D] transition mx-auto sm:mx-0 block sm:inline-flex"
         >
           Experimente agora
         </Button>

@@ -16,7 +16,7 @@ export function Banner() {
 
   return (
     <>
-      <section className="w-full py-20 text-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="w-full py-10 sm:py-20 text-left sm:text-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl sm:text-5xl font-extrabold text-[#060E3D] leading-tight mb-6">
           Automatize sua rotina jurídica com geração de peças e gestão
           documental integrada
@@ -26,12 +26,14 @@ export function Banner() {
           dos seus casos, gera análises e insights valiosos e automatiza a
           criação de peças, permitindo que você foque no que realmente importa.
         </p>
-        <Button
-          onClick={() => setModalOpen(true)}
-          className="inline-flex items-center gap-2 bg-[#5BC0DE] text-white py-3 sm:py-4 px-6 rounded-lg text-sm sm:text-base font-semibold hover:bg-[#060E3D] transition"
-        >
-          Agende uma demonstração <ArrowUpRight size={16} />
-        </Button>
+        <div className="flex justify-center sm:justify-center">
+          <Button
+            onClick={() => setModalOpen(true)}
+            className="inline-flex items-center gap-2 bg-[#5BC0DE] text-white py-3 sm:py-4 px-6 rounded-lg text-sm sm:text-base font-semibold hover:bg-[#060E3D] transition"
+          >
+            Agende uma demonstração <ArrowUpRight size={16} />
+          </Button>
+        </div>
         <ModalAgendar open={modalOpen} onOpenChange={setModalOpen} />
       </section>
 
@@ -84,10 +86,10 @@ export function Banner() {
           </div>
         </div>
         <div>
-          <p className="text-base sm:text-lg font-medium text-gray-500 mb-2 text-center sm:text-left mt-8">
+          <p className="text-base sm:text-lg font-medium text-gray-500 mb-2 text-left mt-8">
             De advogados, para advogados
           </p>
-          <p className="text-lg sm:text-2xl font-semibold text-[#060E3D] leading-snug text-justify">
+          <p className="text-lg sm:text-2xl font-semibold text-[#060E3D] leading-snug text-left">
             Centralize a gestão de clientes, casos e documentos. Automatize sua
             rotina, da coleta de dados à geração de peças, em um ambiente seguro
             e em conformidade com a LGPD.

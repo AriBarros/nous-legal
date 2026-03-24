@@ -34,10 +34,10 @@ export function Planos() {
   return (
     <section
       id="plano"
-      className="bg-[#F3F5F7] py-20 overflow-x-hidden"
+      className="bg-[#F3F5F7] py-10 sm:py-20 overflow-x-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-[#060E3D] mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-[#060E3D] mb-8 sm:mb-12">
         Veja todos os nossos <br />
         <span className="text-[#5BC0DE]">Planos e Preços</span>
       </h2>

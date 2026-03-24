@@ -8,7 +8,7 @@ export function Produtos() {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <section className="px-4 py-16 max-w-7xl mx-auto overflow-x-hidden">
+    <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-x-hidden">
       <h2 className="text-3xl font-bold text-[#060E3D] mb-12 text-center">
         Soluções Inteligentes para Advogados
       </h2>

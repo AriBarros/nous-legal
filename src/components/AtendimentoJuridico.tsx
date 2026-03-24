@@ -11,8 +11,9 @@ export function AtendimentoJuridico() {
   return (
     <div
       id="atendimento"
-      className="bg-[#F3F5F7] py-16 px-4 md:px-20 flex flex-col md:flex-row items-center justify-center gap-y-10 md:gap-x-80 mt-40"
+      className="bg-[#F3F5F7] py-16 mt-40"
     >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center gap-y-10 md:gap-x-20">
       <div className="relative max-w-md w-full">
         <div className="w-full h-96 shadow-lg rounded-lg overflow-hidden">
           <img
@@ -73,6 +74,7 @@ export function AtendimentoJuridico() {
           Experimente agora
         </Button>
         <ModalAgendar open={modalOpen} onOpenChange={setModalOpen} />
+      </div>
       </div>
     </div>
   );

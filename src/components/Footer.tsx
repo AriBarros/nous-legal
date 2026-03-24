@@ -13,7 +13,8 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-white border-t border-gray-200 text-gray-900 px-6 md:px-24 py-16">
+    <footer className="bg-white border-t border-gray-200 text-gray-900 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-y-12 gap-x-20 text-center md:text-left">
         <div className="max-w-sm">
           <div className="mb-5 flex items-center justify-center md:items-start md:justify-start">
@@ -89,6 +90,7 @@ export function Footer() {
 
       <div className="mt-12 border-t border-gray-200 pt-6 text-center text-base text-gray-600 font-semibold">
         ©2025 Nous Legal® Todos direitos reservados.
+      </div>
       </div>
     </footer>
   );

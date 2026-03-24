@@ -16,7 +16,7 @@ export function Banner() {
 
   return (
     <>
-      <section className="w-full px-4 py-20 text-center max-w-7xl mx-auto">
+      <section className="w-full py-20 text-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl sm:text-5xl font-extrabold text-[#060E3D] leading-tight mb-6">
           Automatize sua rotina jurídica com geração de peças e gestão
           documental integrada
@@ -35,7 +35,7 @@ export function Banner() {
         <ModalAgendar open={modalOpen} onOpenChange={setModalOpen} />
       </section>
 
-      <div className="mt-16 sm:mt-32 text-left max-w-4xl mx-auto px-4 sm:px-0">
+      <div className="mt-16 sm:mt-32 text-left max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative w-full flex items-center justify-center">
           <div className="w-full shadow-lg">
             <Carousel className="w-full">

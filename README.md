@@ -1,54 +1,138 @@
-# React + TypeScript + Vite
+# nous-legal — site institucional (`www.nouslegal.com.br`)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Repositório do site institucional da Nous Legal, hospedado no **Firebase Hosting** (projeto Firebase `nous-legal`).
 
-Currently, two official plugins are available:
+> ⚠️ **Estado atual: site desativado — o domínio redireciona para a plataforma.**
+> Veja [Redirect ativo](#-redirect-ativo-wwwnouslegalcombr--plataforma) abaixo.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🔁 Redirect ativo (`www.nouslegal.com.br` → plataforma)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Hoje **todas** as URLs de `https://www.nouslegal.com.br` retornam **HTTP 301 (Moved Permanently)** apontando para:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+https://plataforma.nouslegal.com.br
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Isso vale para qualquer rota — `/`, `/planos`, `/qualquer/coisa`, etc.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Por que foi feito assim?
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+O site institucional foi desativado e a entrada principal do produto passou a ser a plataforma. Optamos pelo **redirect 301 no Firebase Hosting** em vez de mexer no DNS porque:
+
+- **DNS não faz redirect HTTP.** Um `CNAME` de `www` para `plataforma` apenas serviria o conteúdo da plataforma na URL antiga, quebrando cookies, OAuth, SEO e o certificado SSL.
+- **301 transfere autoridade de SEO** do domínio antigo para o novo.
+- É **fácil de reverter** — basta remover o bloco `redirects` do `firebase.json` e fazer um novo deploy (~1 min).
+
+### Como funciona tecnicamente
+
+A regra está em [`firebase.json`](./firebase.json):
+
+```json
+{
+  "hosting": {
+    "public": "dist",
+    "redirects": [
+      {
+        "source": "**",
+        "destination": "https://plataforma.nouslegal.com.br",
+        "type": 301
+      }
+    ],
+    "rewrites": [
+      { "source": "**", "destination": "/index.html" }
+    ]
+  }
+}
+```
+
+O `source: "**"` casa com qualquer caminho. O Firebase Hosting aplica `redirects` **antes** de servir qualquer arquivo, então o React/Vite nem chega a ser carregado quando o redirect está ativo.
+
+### Como **desativar** o redirect (e voltar a servir o site)
+
+1. Remova o bloco `"redirects"` do [`firebase.json`](./firebase.json).
+2. Commit + push na `main`. O CI/CD faz o deploy automático.
+
+Ou, mais rápido, reverta o commit que adicionou o redirect:
+
+```bash
+git revert <hash-do-commit-do-redirect>
+git push origin main
+```
+
+---
+
+## 🚀 Deploy
+
+O deploy é **automático** via GitHub Actions: todo push para `main` dispara [`firebase-deploy.yml`](.github/workflows/firebase-deploy.yml), que:
+
+1. Instala dependências (`npm ci`)
+2. Builda o projeto (`npm run build` → pasta `dist/`)
+3. Faz deploy no canal `live` do Firebase Hosting (projeto `nous-legal`)
+
+A autenticação usa um **service account** armazenado no segredo `FIREBASE_SERVICE_ACCOUNT_NOUS_LEGAL` (Settings → Secrets and variables → Actions).
+
+**Você não precisa de acesso ao Firebase Console para deployar** — basta merge na `main`.
+
+### Deploy manual (caso o CI/CD esteja fora do ar)
+
+Requer Firebase CLI e acesso ao projeto `nous-legal` no Firebase:
+
+```bash
+npm ci
+npm run build
+firebase deploy --only hosting --project nous-legal
+```
+
+---
+
+## 🧪 Desenvolvimento local
+
+```bash
+npm install
+npm run dev      # servidor de dev (Vite)
+npm run build    # gera dist/
+npm run preview  # serve dist/ localmente para teste
+```
+
+Stack: **React + TypeScript + Vite + Tailwind + Radix UI**.
+
+---
+
+## 🌐 Domínio e DNS
+
+- DNS gerenciado no **Registro.br** (zona DNS de `nouslegal.com.br`).
+- `www.nouslegal.com.br` → `CNAME` → `nous-legal.web.app` (Firebase Hosting).
+- Certificado SSL gerenciado automaticamente pelo Firebase.
+
+> Nenhuma alteração no DNS é necessária para mudar o destino do redirect — tudo é controlado pelo `firebase.json` deste repo.
+
+---
+
+## 👥 Acessos
+
+| Recurso | Onde | Quem tem acesso |
+|---|---|---|
+| Repositório GitHub | `AriBarros/nous-legal` | Ari Barros (owner), Daniel Mello Farias |
+| Firebase Console | projeto `nous-legal` | Owner do projeto (solicitar acesso ao Ari) |
+| Deploy via CI/CD | GitHub Actions | Automático — qualquer push em `main` |
+
+Para gerenciar o projeto no Firebase Console (versões antigas, domínios customizados, billing, etc.), peça ao owner para adicionar seu e-mail em **Firebase Console → Settings → Users and permissions**.
+
+---
+
+## ✅ Como testar o redirect
+
+Numa aba anônima (para evitar cache), abra:
+
+- https://www.nouslegal.com.br → deve cair em `plataforma.nouslegal.com.br`
+- https://www.nouslegal.com.br/planos → idem
+
+Ou pelo terminal:
+
+```bash
+curl -I https://www.nouslegal.com.br
+# Esperado: HTTP/2 301
+# location: https://plataforma.nouslegal.com.br
 ```
